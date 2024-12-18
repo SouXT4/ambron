@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberpunk Portfolio</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #020024, #090979, #00d4ff);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 2px solid rgba(0, 255, 255, 0.8);
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            text-align: center;
+            padding: 20px 0;
+            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #00ffff;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            transform: scale(1.2);
+            color: #fff;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 120px;
+            overflow: hidden;
+        }
+
+        /* Carousel */
+        .carousel {
+            display: flex;
+            transition: transform 3s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .carousel-item img {
+            width: 150px;
+            height: 200px;
+            object-fit: cover;
+            border: 4px solid rgba(0, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+            margin-top: 10px;
+        }
+
+        .carousel-item h2 {
+            font-size: 2em;
+            margin: 20px 0;
+            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+        }
+
+        .carousel-item p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 50, 0.9);
+            color: #00ffff;
+            text-align: center;
+            padding: 20px 0;
+            text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+            box-shadow: 0 -2px 10px rgba(0, 255, 255, 0.3);
+        }
+
+        footer a {
+            color: #00ffff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>My Portfolio</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Homepage</a></li>
+                <li><a href="biodata.html">My Biodata</a></li>
+                <li><a href="portfolio1.html">My Portfolio</a></li>
+                <li><a href="video2.html">My Video</a></li>
+                <li><a href="comment1.html">Your Comments</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="carousel" id="carousel">
+            <div class="carousel-item">
+                <h2>Project Showcase</h2>
+                <img src="esport.jpg" alt="Project Image">
+                <p>I served as the Event Director representing PMFKI for the Esports Mobile Legends Tournament during FKI Open Day / Tamu Gadang.
+					I oversaw all aspects of the event, including planning, coordination, and execution.</p>
+            </div>
+            <div class="carousel-item">
+                <h2>Gallery</h2>
+                <img src="koir.jpg" alt="Gallery Image">
+                <p>I served as the choir conductor for man voice at Catholic Church Of 
+					The Blessed Sacrament, leading the choir during worship services and special events.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Cyberpunk Portfolio | Made with 💙</p>
+        <p>Contact me: <a href="mailto:Ambronron123@gmail.com">Ambronron123@gmail.com</a></p>
+    </footer>
+
+   <script>
+    const carousel = document.getElementById('carousel');
+    const items = carousel.querySelectorAll('.carousel-item');
+    let currentIndex = 0;
+
+    function moveCarousel() {
+        // Step 1: Apply ease-in transition
+        carousel.style.transition = 'transform 3s ease-in-out';
+        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+        // Step 2: After 3 seconds (ease-in completed), pause for 5 seconds
+        setTimeout(() => {
+            // Temporarily remove transition to "pause"
+            carousel.style.transition = 'none';
+
+            // Step 3: After 5 seconds, move to next slide with ease-out
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % items.length;
+                carousel.style.transition = 'transform 3s ease-in-out';
+                carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }, 5000); // Pause duration
+        }, 3000); // Ease-in duration
+    }
+
+    // Start the carousel with a total cycle of 3s ease-in + 5s pause + 3s ease-out
+    setInterval(moveCarousel, 10000); // 11 seconds total cycle
+</script>
+
+</body>
+</html>
